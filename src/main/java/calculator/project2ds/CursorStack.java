@@ -68,9 +68,6 @@ public class CursorStack {
         return CURSOR_SPACE[current].data;
     }
 
-    private boolean isLast(int p){
-        return (CURSOR_SPACE[p].next == 0);
-    }
 
     private void free(int p){
         CURSOR_SPACE[p].next = CURSOR_SPACE[0].next;
@@ -80,6 +77,5 @@ public class CursorStack {
     public boolean isEmpty(int stackHead){
         return (CURSOR_SPACE[stackHead].next == 0);
     }
-
 
 }

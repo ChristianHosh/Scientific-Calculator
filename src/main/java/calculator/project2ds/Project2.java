@@ -125,104 +125,100 @@ public class Project2 extends Application {
             for (String current : postfix) {
                 double op2, op1, res;
                 switch (current) {
-                    case "+":
+                    case "+" -> {
                         op2 = (double) cursorStack.pop(stack);
                         op1 = (double) cursorStack.pop(stack);
                         res = op1 + op2;
                         System.out.println(op1 + " + " + op2 + " = " + res);
                         cursorStack.push(stack, res);
-                        break;
-                    case "-":
+                    }
+                    case "-" -> {
                         op2 = (double) cursorStack.pop(stack);
                         op1 = (double) cursorStack.pop(stack);
                         res = op1 - op2;
                         System.out.println(op1 + " - " + op2 + " = " + res);
                         cursorStack.push(stack, res);
-                        break;
-                    case "*":
+                    }
+                    case "*" -> {
                         op2 = (double) cursorStack.pop(stack);
                         op1 = (double) cursorStack.pop(stack);
                         res = op1 * op2;
                         System.out.println(op1 + " * " + op2 + " = " + res);
                         cursorStack.push(stack, res);
-                        break;
-                    case "/":
+                    }
+                    case "/" -> {
                         op2 = (double) cursorStack.pop(stack);
                         op1 = (double) cursorStack.pop(stack);
                         res = op1 / op2;
                         System.out.println(op1 + " / " + op2 + " = " + res);
                         cursorStack.push(stack, res);
-                        break;
-                    case "%":
+                    }
+                    case "%" -> {
                         op2 = (double) cursorStack.pop(stack);
                         op1 = (double) cursorStack.pop(stack);
                         res = op1 % op2;
                         System.out.println(op1 + " % " + op2 + " = " + res);
                         cursorStack.push(stack, res);
-                        break;
-                    case "^":
+                    }
+                    case "^" -> {
                         op2 = (double) cursorStack.pop(stack);
                         op1 = (double) cursorStack.pop(stack);
                         res = Math.pow(op1, op2);
                         System.out.println(op1 + " ^ " + op2 + " = " + res);
                         cursorStack.push(stack, res);
-                        break;
-                    case "cos":
+                    }
+                    case "cos" -> {
                         op2 = (double) cursorStack.pop(stack);
                         res = Math.cos(Math.toRadians(op2));
                         System.out.println("Cos " + op2 + " = " + res);
                         cursorStack.push(stack, res);
-                        break;
-                    case "sin":
+                    }
+                    case "sin" -> {
                         op2 = (double) cursorStack.pop(stack);
                         res = Math.sin(Math.toRadians(op2));
                         System.out.println("sin " + op2 + " = " + res);
                         cursorStack.push(stack, res);
-                        break;
-                    case "tan":
+                    }
+                    case "tan" -> {
                         op2 = (double) cursorStack.pop(stack);
                         res = Math.tan(Math.toRadians(op2));
                         System.out.println("tan " + op2 + " = " + res);
                         cursorStack.push(stack, res);
-                        break;
-                    case "√":
+                    }
+                    case "√" -> {
                         op2 = (double) cursorStack.pop(stack);
                         res = Math.sqrt(op2);
                         System.out.println("√ " + op2 + " = " + res);
                         cursorStack.push(stack, res);
-                        break;
-                    case "ln":
+                    }
+                    case "ln" -> {
                         op2 = (double) cursorStack.pop(stack);
                         res = Math.log(op2);
                         System.out.println("ln " + op2 + " = " + res);
                         cursorStack.push(stack, res);
-                        break;
-                    case "log":
+                    }
+                    case "log" -> {
                         op2 = (double) cursorStack.pop(stack);
                         res = Math.log10(op2);
                         System.out.println("log " + op2 + " = " + res);
                         cursorStack.push(stack, res);
-                        break;
-                    case "!":
+                    }
+                    case "!" -> {
                         op2 = (double) cursorStack.pop(stack);
                         res = factorial(op2);
                         System.out.println("factorial " + op2 + " = " + res);
                         cursorStack.push(stack, res);
-                        break;
-                    case "e":
-                        cursorStack.push(stack, E);
-                        break;
-                    case "π":
-                        cursorStack.push(stack, PI);
-                        break;
-                    default:
+                    }
+                    case "e" -> cursorStack.push(stack, E);
+                    case "π" -> cursorStack.push(stack, PI);
+                    default -> {
                         try {
                             double casted = Double.parseDouble(current);
                             System.out.println("Pushed " + casted + " Into Stack");
                             cursorStack.push(stack, casted);
                         } catch (Exception ignored) {
                         }
-                        break;
+                    }
                 }
             }
         }catch (Exception e){
@@ -299,28 +295,19 @@ public class Project2 extends Application {
     public int precedence(Object s) {
         try{
             String ch = (String) s;
-            switch (ch)
-            {
-                case "+":
-                case "-":
+            switch (ch) {
+                case "+", "-" -> {
                     return 1;
-
-                case "*":
-                case "/":
-                case "%":
+                }
+                case "*", "/", "%" -> {
                     return 2;
-
-                case "^":
-                case "√":
-                case "!":
+                }
+                case "^", "√", "!" -> {
                     return 3;
-
-                case "cos":
-                case "sin":
-                case "tan":
-                case "ln":
-                case "log":
+                }
+                case "cos", "sin", "tan", "ln", "log" -> {
                     return 4;
+                }
             }
         }catch (Exception ignored){}
         return -1;

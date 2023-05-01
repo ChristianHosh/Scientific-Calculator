@@ -9,8 +9,5 @@
         <module name="Project2DS" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Project2DS" target="16" />
-    </bytecodeTargetLevel>
   </component>
 </project>
